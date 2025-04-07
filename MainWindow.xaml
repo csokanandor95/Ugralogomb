@@ -15,8 +15,8 @@
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <StackPanel x:Name="spEszkoztar" Grid.Row="0" Orientation="Horizontal">
-                <Button x:Name="btStart" Width="70" FontSize="14" Margin="10,0" Click="btStart_Click">Start</Button>
+            <StackPanel x:Name="spEszkoztar" Grid.Row="0" HorizontalAlignment="Stretch" Orientation="Horizontal"> <!-- elrendezési konténer, ami egymás után helyezi el a gyermekeit (lehet függőleges v vízszintes) -->
+                <Button x:Name="btStart" Width="70" FontSize="14" Margin="10,0" Click="btStart_Click">Start</Button> <!-- Margin: előtte, fölöttem, mögötte, utána -->
                 <Label x:Name="llMin" Content="ms" VerticalAlignment="Center"/>
                 <Slider x:Name="slCsuszka" VerticalAlignment="Center" Width="200" TickPlacement="Both"/>
                 <Label x:Name="llMax" Content="ms" VerticalAlignment="Center"/>
