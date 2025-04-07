@@ -6,28 +6,29 @@
         xmlns:local="clr-namespace:Ugralogomb"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid x:Name="grRacs">
+    <Grid> <!-- minden a Griden belül van -->
+        <Grid x:Name="grRacs"> <!-- azokhoz az elemekhez, amiket el akarunk érni, célszerű elnevezni h kódból elt udjuk érni később -->
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition/>
+                <RowDefinition Height="40"/> <!-- felosztja 4 sorra az ablakom -->                
+                <RowDefinition Height="23*"/> 
+                <RowDefinition Height="159*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <StackPanel x:Name="spEszkoztar" Grid.Row="0" HorizontalAlignment="Stretch" Orientation="Horizontal">
+            <StackPanel x:Name="spEszkoztar" Grid.Row="0" Orientation="Horizontal">
                 <Button x:Name="btStart" Width="70" FontSize="14" Margin="10,0" Click="btStart_Click">Start</Button>
                 <Label x:Name="llMin" Content="ms" VerticalAlignment="Center"/>
                 <Slider x:Name="slCsuszka" VerticalAlignment="Center" Width="200" TickPlacement="Both"/>
                 <Label x:Name="llMax" Content="ms" VerticalAlignment="Center"/>
             </StackPanel>
 
-            <Border Grid.Row="1" BorderThickness="5" BorderBrush="BlanchedAlmond">
+            <Border Grid.Row="1" BorderThickness="5" BorderBrush="BlanchedAlmond" Grid.RowSpan="2">
                 <Canvas x:Name="cvLap">
                     <Button x:Name="btKapjEl" Content="KapjEl!" Width="70" Height="30" Canvas.Top="100" Canvas.Left="100"/>
                 </Canvas>
             </Border>
 
-            <ProgressBar x:Name="pbVegrehajtasJelzo" Grid.Row="2"/>
+            <ProgressBar x:Name="pbVegrehajtasJelzo" Grid.Row="2" Margin="0,318,0,0" Grid.RowSpan="2"/>
 
         </Grid>
     </Grid>
