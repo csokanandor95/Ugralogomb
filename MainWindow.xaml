@@ -24,7 +24,7 @@
 
             <Border Grid.Row="1" BorderThickness="10" BorderBrush="Black" Grid.RowSpan="2">
                 <Canvas x:Name="cvLap">
-                    <Button x:Name="btKapjEl" Content="CatchMe!" Width="70" Height="30" Canvas.Top="100" Canvas.Left="100"/> <!-- gom,b pozícionálása-->
+                    <Button x:Name="btKapjEl" Content="CatchMe!" Width="70" Height="30" Canvas.Top="100" Canvas.Left="100" Click="btKapjEl_Click" MouseEnter="btKapjEl_MouseEnter" MouseLeave="btKapjEl_MouseLeave"/> <!-- gom,b pozícionálása-->
                 </Canvas>
             </Border>
 

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -67,8 +68,9 @@ namespace Ugralogomb
 
         private void FeliratKiir()
         {
-            Title = $"Találatok: {eredmeny}, Időzítés: {slCsuszka.Value,7:F2} ms, " +
-                $"Még hátravan: {Math.Max(0, maxJatekido - Elteltido()),5:F2} s";
+            Title = $"Találatok: {eredmeny}";//, Időzítés: {slCsuszka.Value,7:F2} ms, " + $"Még hátravan: {Math.Max(0, maxJatekido - Elteltido()),5:F2} s";
+
+
         }
 
 
@@ -99,7 +101,45 @@ namespace Ugralogomb
             btStart.IsEnabled = false;
             btKapjEl.IsEnabled = true;
             dtIdozito.IsEnabled = true;
+            FeliratKiir();
 
         }
+
+        private void btKapjEl_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine($"Kattintás! Érvényes: {ervenyes}");
+            //if (!ervenyes) return;
+            eredmeny++;
+            FeliratKiir();
+            //Ha ezt bekapcsoljuk akkor addig letiltja a gombot míg az új pozicióba nem kerül
+            // btKapjEl.IsEnabled = false;
+        }
+
+        private void btKapjEl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            //a kattintás érvényes területen történt-e
+            ervenyes = true;
+        }
+
+        private void btKapjEl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            //Nem a gombon kattintottunk
+            ervenyes = false;
+        }
+
+        private void slCsuszka_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Tároljuk, hogy most folyik-e játék. 
+            bool vanJatek = dtIdozito.IsEnabled;
+            // Időzítő letiltása az intervallum módosítás miatt. 
+            dtIdozito.IsEnabled = false;
+            // Időzítő intervallumának beállítása. 
+            dtIdozito.Interval = new TimeSpan(0, 0, 0, 0, (int)slCsuszka.Value);
+            // A játék közben mozgatja a felhasználó a csúszkát, akkor
+            if (vanJatek) dtIdozito.IsEnabled = true;
+            // Eredmény megjelenítése az ablak fejlécében. 
+            FeliratKiir();
+        }
+
     }
 }
