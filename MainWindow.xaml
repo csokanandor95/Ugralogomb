@@ -6,6 +6,41 @@
         xmlns:local="clr-namespace:Ugralogomb"
         mc:Ignorable="d"
         Title="CatchMe Game" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="FancyButton">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Background" Value="#FF4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        CornerRadius="10"
+                        Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF66BB6A"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid> <!-- minden a Griden belül van -->
         <Grid x:Name="grRacs"> <!-- azokhoz az elemekhez, amiket el akarunk érni, célszerű elnevezni h kódból elt udjuk érni később -->
             <Grid.RowDefinitions>
@@ -22,9 +57,15 @@
                 <Label x:Name="llMax" Content="ms" VerticalAlignment="Center"/>
             </StackPanel>
 
-            <Border Grid.Row="1" BorderThickness="10" BorderBrush="Black" Grid.RowSpan="2">
+            <Border Grid.Row="1" BorderThickness="10" BorderBrush="Green" Grid.RowSpan="2">
                 <Canvas x:Name="cvLap">
-                    <Button x:Name="btKapjEl" Content="CatchMe!" Width="70" Height="30" Canvas.Top="100" Canvas.Left="100" Click="btKapjEl_Click" MouseEnter="btKapjEl_MouseEnter" MouseLeave="btKapjEl_MouseLeave"/> <!-- gom,b pozícionálása-->
+                    <Button x:Name="btKapjEl" Style="{StaticResource FancyButton}" Content="CatchMe!" Width="80" Height="30" Canvas.Top="100" Canvas.Left="100" Click="btKapjEl_Click" MouseEnter="btKapjEl_MouseEnter" MouseLeave="btKapjEl_MouseLeave"/> <!-- gom,b pozícionálása-->
+                    <Canvas.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFB3E5FC" Offset="0.0"/>
+                            <GradientStop Color="#FF81D4FA" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Canvas.Background>
                 </Canvas>
             </Border>
 
