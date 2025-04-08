@@ -49,7 +49,7 @@ namespace Ugralogomb
             llMax.Content = slCsuszka.Maximum + "ms";
 
             btKapjEl.IsEnabled = false; //játék kezdete előtt ne lehessen nyomkodni a gombot
-            maxJatekido = 10;
+            maxJatekido = 15;
 
             pbVegrehajtasJelzo.Minimum = 0;
             pbVegrehajtasJelzo.Maximum = maxJatekido;
