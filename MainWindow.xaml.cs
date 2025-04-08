@@ -48,7 +48,7 @@ namespace Ugralogomb
             llMin.Content = slCsuszka.Minimum + "ms";
             llMax.Content = slCsuszka.Maximum + "ms";
 
-            btKapjEl.IsEnabled = false;
+            btKapjEl.IsEnabled = false; //játék kezdete előtt ne lehessen nyomkodni a gombot
             maxJatekido = 10;
 
             pbVegrehajtasJelzo.Minimum = 0;
@@ -67,7 +67,7 @@ namespace Ugralogomb
 
         private void FeliratKiir()
         {
-            Title = $"Találatok: {eredmeny}, Időzítés: {slCsuszka.Value,7:F2} ms" +
+            Title = $"Találatok: {eredmeny}, Időzítés: {slCsuszka.Value,7:F2} ms, " +
                 $"Még hátravan: {Math.Max(0, maxJatekido - Elteltido()),5:F2} s";
         }
 
@@ -78,8 +78,8 @@ namespace Ugralogomb
             pbVegrehajtasJelzo.Value = Elteltido();
             if (Elteltido() < maxJatekido)
             {
-                btKapjEl.SetValue(LeftProperty, veletlen.NextDouble() * (cvLap.ActualWidth - btKapjEl.Width));
-                btKapjEl.SetValue(LeftProperty, veletlen.NextDouble() * (cvLap.ActualHeight - btKapjEl.Height));
+                btKapjEl.SetValue(LeftProperty, veletlen.NextDouble() * (cvLap.ActualWidth - btKapjEl.Width)); //az ablak szélességéből és magasságából kivonom a gomb szélességét és magassságát - ne húzhassa ki az ablakból
+                btKapjEl.SetValue(TopProperty, veletlen.NextDouble() * (cvLap.ActualHeight - btKapjEl.Height));
 
             }
             else
