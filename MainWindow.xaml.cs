@@ -68,7 +68,7 @@ namespace Ugralogomb
 
         private void FeliratKiir()
         {
-            Title = $"Találatok: {eredmeny}";//, Időzítés: {slCsuszka.Value,7:F2} ms, " + $"Még hátravan: {Math.Max(0, maxJatekido - Elteltido()),5:F2} s";
+            Title = $"Találatok: {eredmeny}, Időzítés: {slCsuszka.Value,7:F2} ms, " + $"Még hátravan: {Math.Max(0, maxJatekido - Elteltido()),5:F2} s";
 
 
         }
