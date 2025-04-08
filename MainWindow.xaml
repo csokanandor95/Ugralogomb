@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ugralogomb"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CatchMe Game" Height="450" Width="800">
     <Grid> <!-- minden a Griden belül van -->
         <Grid x:Name="grRacs"> <!-- azokhoz az elemekhez, amiket el akarunk érni, célszerű elnevezni h kódból elt udjuk érni később -->
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/> <!-- felosztja 4 sorra az ablakom -->                
-                <RowDefinition Height="23*"/> 
+                <RowDefinition Height="40"/> <!-- felosztja 4 sorra az ablakom -->
+                <RowDefinition Height="23*"/>
                 <RowDefinition Height="159*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
@@ -22,9 +22,9 @@
                 <Label x:Name="llMax" Content="ms" VerticalAlignment="Center"/>
             </StackPanel>
 
-            <Border Grid.Row="1" BorderThickness="5" BorderBrush="BlanchedAlmond" Grid.RowSpan="2">
+            <Border Grid.Row="1" BorderThickness="10" BorderBrush="Black" Grid.RowSpan="2">
                 <Canvas x:Name="cvLap">
-                    <Button x:Name="btKapjEl" Content="KapjEl!" Width="70" Height="30" Canvas.Top="100" Canvas.Left="100"/>
+                    <Button x:Name="btKapjEl" Content="CatchMe!" Width="70" Height="30" Canvas.Top="100" Canvas.Left="100"/> <!-- gom,b pozícionálása-->
                 </Canvas>
             </Border>
 
