@@ -18,11 +18,11 @@ namespace Ugralogomb
     public partial class MainWindow : Window
     {
         private int eredmeny;
-        private Random veletlen;
+        private Random veletlen; //random számgenerátor
         private DateTime kezdoIdo;
         private int maxJatekido;
         private bool ervenyes;
-        private DispatcherTimer dtIdozito; //idokozonként ad egy jelzést, h tegyük át a gombot új poziba
+        private DispatcherTimer dtIdozito; //idokozonként ad egy jelzést, h tegyük át a gombot új poziba -> csúszkával ezt állítod
 
         public MainWindow()
         {
@@ -30,19 +30,20 @@ namespace Ugralogomb
 
             dtIdozito = new DispatcherTimer
             {
-                Interval = new TimeSpan(0, 0, 0, 0, 500), //egymás utáni időszakok definiálása - 500ms
+                Interval = new TimeSpan(0, 0, 0, 0, 500), //egymás utáni időszakok definiálása -nap,óra,perc,szekundum,miliszekundum - 500ms
                 IsEnabled = false
             };
 
-            //feliratkozás - nem emberi beavatkozás váltja ki, hanem Tick eseményre iratkozol fel, ez kezel bizonyos változásokat
+            //feliratkozás - nem emberi beavatkozás váltja ki, hanem a program működésének egy adott ciklusában történik valami pl. Tick eseményre iratkozol fel, ez kezel bizonyos változásokat
 
-            dtIdozito.Tick += DtIdozito_Tick;
+            dtIdozito.Tick += DtIdozito_Tick; //+= a feliratkozás valamire, a -= a leiratkozás
 
             slCsuszka.Minimum = 100;
             slCsuszka.Maximum = 1500;
             slCsuszka.TickFrequency = 200;
             slCsuszka.SmallChange = 100;
             slCsuszka.LargeChange = 500;
+            slCsuszka.Value = 500;
 
             llMin.Content = slCsuszka.Minimum + "ms";
             llMax.Content = slCsuszka.Maximum + "ms";
